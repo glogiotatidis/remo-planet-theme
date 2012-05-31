@@ -55,13 +55,6 @@ faceheight = 85
 # "natively" knows about.  Look at fancy-examples/index.html.tmpl
 # for the flip-side of this.
 
-[http://autoverse.net/tag/mozilla/feed/atom/]
-name = Nikos Roussos
-email = nikos@roussos.cc
-avatar = http://www.gravatar.com/avatar/3890e2b325dfaf95a63a18e97b723523.jpg?r=g&s=60&d=https%3A%2F%2Freps.mozilla.org%2Fmedia%2Fimg%2Fremo%2Fremo_avatar.png
-
-
-[http://www.nukeador.com/tag/mozilla-en/feed/]
-name = Ruben Martin
-email = nukeador@mozilla-hispano.org
-avatar = http://www.gravatar.com/avatar/398e9afa3b28028426e317d32ba35bff.jpg?r=g&s=60&d=https%3A%2F%2Freps.mozilla.org%2Fmedia%2Fimg%2Fremo%2Fremo_avatar.png
+[http://example.com/feed/atom/]
+name = Foo Bar
+avatar = http://example.com/media/avatar.jpg
