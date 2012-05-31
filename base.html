@@ -26,7 +26,7 @@
   </title>
   <base href="//reps.mozilla.org/" />
 
- <link rel="shortcut icon" href="//reps.mozilla.org/media/img/remo/shortcut.ico" />
+  <link rel="shortcut icon" href="//reps.mozilla.org/media/img/remo/shortcut.ico" />
   <!-- Included CSS Files -->
   <link href="//www.mozilla.org/tabzilla/media/css/tabzilla.css" rel="stylesheet">
   <link rel="stylesheet" media="screen,projection,tv" href="//reps.mozilla.org/media/css/common-min.css" />
@@ -42,9 +42,10 @@
   <link rel="stylesheet" media="screen,projection,tv" href="//reps.mozilla.org/media/css/remo-min.css" />
 
 
-  <link href="file:///home/seadog/Job/Mozilla/remo-planet/venus/output/rss20.xml" rel="alternate" type="application/rss+xml" title="What's New on About.com Web Design / HTML" />
+  <link href="http://planet.mozillareps.org/rss20.xml" rel="alternate" type="application/rss+xml" />
+  <link href="http://planet.mozillareps.org/atom.xml" rel="alternate" type="application/atom+xml" />
   <style>
-    .blog-entry {
+    .planet-blog-entry {
       margin-top: 10px;
       padding: 20px;
       text-align: justify;
@@ -55,9 +56,21 @@
       border-radius: 5px;
       margin-right: 10px;
     }
+    .planet-avatar-small {
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      margin-right: 5px;
+      margin-left: 5px;
+    vertical-align: text-top;
+    }
+    #planet-feed-list {
+      margin-top: 30px;
+    }
+    #planet-feed-list li {
+      padding-left: 5px;
+    }
   </style>
-
-
 </head>
 
 <body>
@@ -155,30 +168,35 @@
       <!-- Page Content -->
       {% block content %}
       <div class="row">
-        <div class="eight columns">
-          <h4>Planet Mozilla Reps</h4>
-
-          {% for item in Items|dictsortreversed:"updated_iso" %}
-            <div class="blog-entry">
-              <div style="float:left;">
-                <img class="planet-avatar" src="{{ item.channel_avatar }}">
-              </div>
-              {% if item.title %}<h5>{{ item.title|safe }}</h5>{% endif %}
-              <h6>{{ item.author }} on {{ item.date }}</h6>
-                {{ item.content|removetags:"img h1 h2 h3 h4"|safe }}
-              <div class="align-right"> <a href="{{ item.link }}">permalink</a></div>
-            </div>
-            {% if not forloop.last %}<hr/>{% endif %}
-
-          {% endfor %}
+        <div class="eight columns phone-four">
+          <div class="row">
+            <h4>Planet Mozilla Reps</h4>
+              {% for item in Items|dictsortreversed:"updated_iso" %}
+                <div class="planet-blog-entry">
+                  <div style="float:left;">
+                    <img class="planet-avatar" src="{{ item.channel_avatar }}">
+                  </div>
+                  {% if item.title %}<h5>{{ item.title|safe }}</h5>{% endif %}
+                    <h6>{{ item.author }} on {{ item.date }}</h6>
+                    {{ item.content|removetags:"img h1 h2 h3 h4"|safe }}
+                    <div class="align-right"> <a href="{{ item.link }}">permalink</a></div>
+                </div>
+                {% if not forloop.last %}<hr/>{% endif %}
+              {% endfor %}
+          </div>
         </div>
-        <div class="four columns">
-          <h2>Feeds</h2>
-          <ul>
-            {% for channel in Channels %}
-            <li><a href="{{ channel.link }}" target="_blank">{{ channel.name }}</a></li>
-            {% endfor %}
-          </ul>
+        <div class="four columns hide-on-phones">
+          <div class="row">
+            <h4>Feeds</h4>
+            <ul id="planet-feed-list">
+              {% for channel in Channels %}
+                <li>
+                  <img class="planet-avatar-small" src="{{ channel.avatar }}">
+                  <a href="{{ channel.link }}" target="_blank">{{ channel.name }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
       {% endblock %}
