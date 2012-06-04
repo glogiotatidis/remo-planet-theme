@@ -1,2 +1,1 @@
-<base href="https://reps.mozilla.org/" />
 {% include "base.html" %}
