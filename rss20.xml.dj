@@ -17,10 +17,6 @@
 	<pubDate>{{ item.date_822 }}</pubDate>
 	{% if item.channel_email %}
           <author>{{item.channel_email}} {% if item.author %}({{ item.author }}){% endif %}</author>
-	{% else %}
-	  {% if item.author %}
-	  <dc:creator>{{ item.author }}</dc:creator>
-	  {% endif %}
 	{% endif %}
 </item>
 {% endfor %}
