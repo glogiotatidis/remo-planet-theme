@@ -13,7 +13,7 @@
 	<title>{{ item.channel_name|safe }} - {{ item.title|safe }}</title>
 	<guid isPermaLink="false">{{ item.id|safe }}</guid>
 	<link>{{ item.link|safe }}</link>
-	<description>{{ item.content|striptags|truncatewords:40 }}</description>
+	<description>{{ item.content|safe }}</description>
 	<pubDate>{{ item.date_822 }}</pubDate>
 	<author>{{item.channel_email}} ({{ item.author }})</author>
 </item>
