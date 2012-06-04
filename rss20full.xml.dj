@@ -6,14 +6,16 @@
 	<link>{{ link }}</link>
 	<language>en</language>
 	<description>{{ name|safe }} - {{ link|safe }}</description>
-	<atom:link rel="self" href="http://planet.mozillareps.org/rss20.xml" type="application/rss+xml"/>
+	<atom:link rel="self" href="http://planet.mozillareps.org/rss20full.xml" type="application/rss+xml"/>
 
 {% for item in Items|dictsortreversed:"updated_iso" %}
 <item>
 	<title>{{ item.channel_name|safe }} - {{ item.title|safe }}</title>
 	<guid isPermaLink="false">{{ item.id|safe }}</guid>
 	<link>{{ item.link|safe }}</link>
-	<description>{{ item.content|safe }}</description>
+	<description>
+	  <![CDATA[{{ item.content|safe }}]]>
+	</description>
 	<pubDate>{{ item.date_822 }}</pubDate>
 	<author>{{item.channel_email}} ({{ item.author }})</author>
 </item>
