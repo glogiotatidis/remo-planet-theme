@@ -18,29 +18,28 @@
 <!--<![endif]-->
 
 <head>
-  <base href="https://reps.mozilla.org/" />
   <meta charset="utf-8" />
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
   <title>
     {% block pagetitle %}Mozilla Reps Planet{% endblock%}
   </title>
-  <script src="//planet.mozillareps.org/less.js" type="text/javascript"></script>
-  <base href="//reps.mozilla.org/" />
 
   <link rel="shortcut icon" href="//reps.mozilla.org/static/base/img/remo/shortcut.ico" />
   <!-- Included CSS Files -->
-  <link href="//www.mozilla.org/tabzilla/media/css/tabzilla.css" rel="stylesheet">
-  <link rel="stylesheet" media="screen,projection,tv" href="//reps.mozilla.org/static/base/css/foundation.css" />
+  <link href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" rel="stylesheet" />
+  <link rel="stylesheet" media="screen,projection,tv" href="//reps.mozilla.org/static/base/css/foundation-4.css" />
   <!--[if lt IE 9]>
-      <link rel="stylesheet" media="screen,projection,tv" href="//reps.mozilla.org/static/base/css.ie.css" />
+      <link rel="stylesheet" media="screen,projection,tv" href="//reps.mozilla.org/static/base/css/ie-fd4.css" />
   <![endif]-->
   <!-- IE Fix for HTML5 Tags -->
   <!--[if lt IE 9]>
     <script src="//reps.mozilla.org/static/base/js/html5.js"></script>
   <![endif]-->
   <!-- our css is always last to override stuff -->
-  <link rel="stylesheet" media="screen,projection,tv" href="//reps.mozilla.org/static/base/css/app.less" />
+  <link rel="stylesheet/less" media="screen,projection,tv" href="app-fd4.less" />
+  <script src="less.js" type="text/javascript"></script>
+
   <link href="http://planet.mozillareps.org/rss20full.xml" rel="alternate" type="application/rss+xml" title="Planet Mozilla Reps - Full" />
   <link href="http://planet.mozillareps.org/rss20.xml" rel="alternate" type="application/rss+xml" title="Planet Mozilla Reps - Stripped" />
 
@@ -84,38 +83,36 @@
 
       <!-- Header -->
       <header class="row">
-        <div class="twelve columns">
+        <div class="large-12 columns">
 
-          <!-- Sign In & Mozilla Tab -->
           <div class="row">
-
             <!-- Mozilla Tab -->
-            <div class="two columns phone-one push-three-phone push-ten" id="global-header-tab">
-              <a href="http://www.mozilla.org/" id="tabzilla">mozilla</a>
+            <div class="large-2 small-2 columns" id="global-header-tab">
+              <a href="http://www.mozilla.org/" class="logo" id="tabzilla">mozilla</a>
             </div>
 
           </div>
 
           <!-- Logo & Navigation -->
-          <div class="row">
+          <div class="logo-nav">
 
             <!-- Logo and Wordmark -->
-            <div class="four columns" id="logo-box">
-              <div class="row hide-on-phones">
-                <a href="//reps.mozilla.org/">
+            <div class="large-3 columns" id="logo-box">
+              <div class="row hide-for-small">
+                <a class="logo" href="//reps.mozilla.org/">
                   <img src="//reps.mozilla.org/static/base/img/remo/remo_logo_medium.png"
                        alt="Mozilla Reps logo">
-                  <h3><span class="metabold">mozilla</span> reps</h3>
+                  <h2><span class="metabold">mozilla</span> reps</h2>
                 </a>
               </div>
-              <div class="row show-on-phones">
+              <div class="row show-for-small">
                 <h2>mozilla reps mobile</h2>
               </div>
             </div>
 
             <!-- Navigation -->
-            <div class="eight columns hide-on-phones" id="navigation-box">
-              <ul class="nav-bar">
+            <nav role="navigation" class="large-9 columns hide-for-small" id="navigation-box">
+              <ul class="button-group">
                 <li>
                   <a href="//reps.mozilla.org/" class="main">Main</a>
                 </li>
@@ -138,11 +135,11 @@
                   <a href="//reps.mozilla.org/faq/" class="main">FAQ</a>
                 </li>
               </ul>
-            </div>
+            </nav>
 
             <!-- Mobile Navigation -->
-            <div class="eight columns show-on-phones" id="navigation-box-mobile">
-              <ul class="nav-bar">
+            <nav role="navigation" class="small-12 show-for-small" id="navigation-box-mobile">
+              <ul class="button-group">
                 <li>
                   <a href="//reps.mozilla.org/"
                      class="main">Main</a>
@@ -155,8 +152,7 @@
                   <a href="//reps.mozilla.org/events" class="main">Events</a>
                 </li>
               </ul>
-            </div>
-
+            </nav>
           </div>
         </div>
       </header>
@@ -169,7 +165,7 @@
       <!-- Page Content -->
       {% block content %}
       <div class="row">
-        <div class="eight columns phone-four">
+        <div class="large-8 columns">
           <div class="row">
             <h4>Planet Mozilla Reps</h4>
               {% for item in Items|dictsortreversed:"updated_iso" %}
@@ -186,7 +182,7 @@
               {% endfor %}
           </div>
         </div>
-        <div class="four columns hide-on-phones">
+        <div class="large-4 columns hide-on-phones">
           <div class="row">
             <h4>Feeds</h4>
             <ul id="planet-feed-list">
@@ -223,11 +219,12 @@
       your answer is YES, apply to become a Mozilla Rep today!
     </p>
     <p>
-      Not sure if you're ready for Mozilla Reps? There are many
-      other ways to take the lead in the Mozilla Community. If
-      you're a student, register for
-      the <a href="http://studentreps.mozilla.org">Student Reps
-      program</a> to gain experience leading projects at your
+      Not sure if you're ready for Mozilla Reps? There are many other
+      ways to take the lead in the Mozilla Community. If you're a
+      student, register for
+      the <a href="https://wiki.mozilla.org/ReMo/Student_Reps">Firefox
+      Student Ambassadors
+      </a> program to gain experience leading projects at your
       school. And all of our contributor opportunities are available
       to you on the <a href="https://mozilla.org/contribute">Get
       Involved homepage</a>.
@@ -270,9 +267,16 @@
   <!-- Join modal end -->
 
   <!-- Included JS Files -->
-  <script src="https://browserid.org/include.js" type="text/javascript"></script>
-  <script src="//www.mozilla.org/tabzilla/media/js/tabzilla.js"></script>
-  <script src="//reps.mozilla.org/media/js/common-min.js?build=cf26feb"></script>
+  <script src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/jquery-1.7.1.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/modernizr.foundation-4.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/foundation-4.min.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/jquery.prettydate.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/jquery.imageready.min.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/placeholder.min.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/remolib.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/app.js"></script>
+  <script src="//reps.mozilla.org/static/base/js/init.js"></script>
 </body>
 
 </html>
