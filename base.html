@@ -65,10 +65,13 @@
     }
     #planet-feed-list {
       margin-top: 30px;
+      list-style: none;
     }
     #planet-feed-list li {
-      padding-left: 5px;
       margin-bottom: 3px;
+    }
+    .planet h4, .feeds{
+      padding-left: 20px;
     }
   </style>
 </head>
@@ -166,7 +169,7 @@
       {% block content %}
       <div class="row">
         <div class="large-8 columns">
-          <div class="row">
+          <div class="row planet">
             <h4>Planet Mozilla Reps</h4>
               {% for item in Items|dictsortreversed:"updated_iso" %}
                 <div class="planet-blog-entry">
@@ -183,7 +186,7 @@
           </div>
         </div>
         <div class="large-4 columns hide-on-phones">
-          <div class="row">
+          <div class="row feeds">
             <h4>Feeds</h4>
             <ul id="planet-feed-list">
               {% for channel in Channels %}
